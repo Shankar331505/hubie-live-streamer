@@ -1,0 +1,8 @@
+[
+ {"id":"l1","emotion":"happy","text":"Well, well, welcome to the stream, everybody. I'm Hubie, and tonight it's demo mode only, no real money, just good vibes."},
+ {"id":"l2","emotion":"surprised","text":"Oh! Did you see that multiplier? I did not see that coming!"},
+ {"id":"l3","emotion":"amused","text":"Ha ha, that one got me. Chat, you are going to be the death of me."},
+ {"id":"l4","emotion":"thinking","text":"Hmm. Chat says dice. Alright, dice it is. Let's see what luck has for us."},
+ {"id":"l5","emotion":"sleepy","text":"It's three in the morning, and I'm still here. Somebody has to keep an eye on the house."},
+ {"id":"l6","emotion":"sad","text":"Oh, that's a shame. Better luck on the next round."}
+]

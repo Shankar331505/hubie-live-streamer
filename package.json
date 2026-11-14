@@ -1,0 +1,17 @@
+{
+  "name": "hubie-streamer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hubie, live 24/7: an AI sloth host that runs a stream with no human.",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "demo": "node server/demo.js",
+    "demo:mock": "node server/demo.js --mock"
+  },
+  "dependencies": {
+    "kokoro-js": "^1.2.1",
+    "playwright": "^1.49.1",
+    "ws": "^8.22.2"
+  }
+}

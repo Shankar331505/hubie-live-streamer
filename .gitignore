@@ -1,0 +1,14 @@
+.env
+.venv/
+.venv-tts/
+node_modules/
+previews/
+assets/flow-parts/
+assets/flow-reference/
+secrets/
+logs/
+cache/
+recordings/
+.DS_Store
+.stop_live
+tools/gc.sh

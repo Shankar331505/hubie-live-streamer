@@ -1,0 +1,336 @@
+{
+ "size": [
+  1376.0,
+  768.0
+ ],
+ "layers": {
+  "hat": {
+   "file": "hat.png",
+   "x": 583.5,
+   "y": 23.0,
+   "w": 211.0,
+   "h": 130.0,
+   "pivot": [
+    690,
+    135
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "x": 532.5,
+   "y": 101.0,
+   "w": 312.5,
+   "h": 253.5,
+   "pivot": [
+    690,
+    320
+   ]
+  },
+  "mouth_eh": {
+   "file": "mouth_eh.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "mouth_ah": {
+   "file": "mouth_ah.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "mouth_oh": {
+   "file": "mouth_oh.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "mouth_frown": {
+   "file": "mouth_frown.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "mouth_grin": {
+   "file": "mouth_grin.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "mouth_laugh": {
+   "file": "mouth_laugh.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "eyes_laugh_L": {
+   "file": "eyes_laugh_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_laugh_R": {
+   "file": "eyes_laugh_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "eyes_wide_L": {
+   "file": "eyes_wide_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_wide_R": {
+   "file": "eyes_wide_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "eyes_left_L": {
+   "file": "eyes_left_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_left_R": {
+   "file": "eyes_left_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "eyes_right_L": {
+   "file": "eyes_right_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_right_R": {
+   "file": "eyes_right_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "eyes_sleepy_L": {
+   "file": "eyes_sleepy_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_sleepy_R": {
+   "file": "eyes_sleepy_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "mouth_closed": {
+   "file": "mouth_closed.png",
+   "x": 592.5,
+   "y": 230.5,
+   "w": 195.5,
+   "h": 79.5,
+   "slot": "mouth"
+  },
+  "eyes_open_L": {
+   "file": "eyes_open_L.png",
+   "x": 566.5,
+   "y": 176.5,
+   "w": 111.5,
+   "h": 73.5,
+   "slot": "eyeL"
+  },
+  "eyes_open_R": {
+   "file": "eyes_open_R.png",
+   "x": 698.5,
+   "y": 176.5,
+   "w": 121.5,
+   "h": 73.5,
+   "slot": "eyeR"
+  },
+  "armL_upper": {
+   "file": "armL_upper.png",
+   "x": 452.0,
+   "y": 279.0,
+   "w": 111.5,
+   "h": 166.5
+  },
+  "armL_fore": {
+   "file": "armL_fore.png",
+   "x": 369.0,
+   "y": 389.0,
+   "w": 173.0,
+   "h": 159.5
+  },
+  "handL_relaxed": {
+   "file": "handL_relaxed.png",
+   "x": 362.0,
+   "y": 518.0,
+   "w": 117.5,
+   "h": 138.5
+  },
+  "handL_point": {
+   "file": "handL_point.png",
+   "x": 354.0,
+   "y": 518.5,
+   "w": 147.5,
+   "h": 170.0
+  },
+  "handL_fist": {
+   "file": "handL_fist.png",
+   "x": 351.0,
+   "y": 517.5,
+   "w": 150.5,
+   "h": 132.0
+  },
+  "handL_palm": {
+   "file": "handL_palm.png",
+   "x": 319.0,
+   "y": 506.5,
+   "w": 182.5,
+   "h": 185.0
+  },
+  "armR_upper": {
+   "file": "armR_upper.png",
+   "x": 813.0,
+   "y": 279.0,
+   "w": 113.5,
+   "h": 166.5
+  },
+  "armR_fore": {
+   "file": "armR_fore.png",
+   "x": 834.5,
+   "y": 388.0,
+   "w": 176.0,
+   "h": 160.0
+  },
+  "handR_relaxed": {
+   "file": "handR_relaxed.png",
+   "x": 875.0,
+   "y": 517.0,
+   "w": 143.0,
+   "h": 139.5
+  },
+  "handR_point": {
+   "file": "handR_point.png",
+   "x": 875.0,
+   "y": 517.0,
+   "w": 152.0,
+   "h": 171.5
+  },
+  "handR_fist": {
+   "file": "handR_fist.png",
+   "x": 875.0,
+   "y": 516.5,
+   "w": 157.5,
+   "h": 175.0
+  },
+  "handR_palm": {
+   "file": "handR_palm.png",
+   "x": 875.0,
+   "y": 506.5,
+   "w": 182.5,
+   "h": 185.0
+  },
+  "arm_geom": {
+   "shoulderL": [
+    545,
+    335
+   ],
+   "elbowL": [
+    497,
+    421
+   ],
+   "wristL": [
+    430,
+    540
+   ],
+   "shoulderR": [
+    831,
+    335
+   ],
+   "elbowR": [
+    879,
+    421
+   ],
+   "wristR": [
+    946,
+    540
+   ]
+  },
+  "torso": {
+   "file": "torso.png",
+   "x": 482.5,
+   "y": 279.5,
+   "w": 406.0,
+   "h": 462.5
+  },
+  "bowtie": {
+   "file": "bowtie.png",
+   "x": 626.0,
+   "y": 338.0,
+   "w": 133.0,
+   "h": 69.5
+  }
+ },
+ "pivots": {
+  "neck": [
+   690,
+   325
+  ],
+  "hat": [
+   690,
+   138
+  ]
+ },
+ "slots": {
+  "mouth": [
+   598,
+   236,
+   782,
+   304
+  ],
+  "eyeL": [
+   572,
+   182,
+   672,
+   244
+  ],
+  "eyeR": [
+   704,
+   182,
+   814,
+   244
+  ]
+ }
+}
