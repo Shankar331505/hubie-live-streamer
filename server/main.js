@@ -19,6 +19,7 @@ import { createGameBrowser } from './gamebrowser.js';
 import { attachGameAudio } from './gameaudio.js';
 import { createKickChat } from './kickchat.js';
 import { startTlsProxy } from './tlsproxy.js';
+import { createLinkWatch } from './linkwatch.js';
 import { triageChat, cleanUsername } from './safety.js';
 import { matchOption, tally } from './poll.js';
 import { pickFallback } from './fallbacks.js';
@@ -292,10 +293,13 @@ async function kickUrl() {
   const u = new URL(config.kickRtmp.replace(/\/+$/, '').replace(/^rtmps?:/, 'https:'));
   const pth = u.pathname && u.pathname !== '/' ? u.pathname.replace(/\/$/, '') : '/app';
   const relay = await startTlsProxy({ host: u.hostname, port: Number(u.port) || 443, log });
+  kickLink = relay.link;
   return `rtmp://127.0.0.1:${relay.port}${pth}/${config.kickKey}`;
 }
-let streamerOpts = null, restarting = false, watchdogTimer = null;
+let kickLink = null;      // live count of connections to Kick (see tlsproxy.js)
+let streamerOpts = null, restarting = false, watchdogTimer = null, launchedAt = Date.now();
 async function launchStreamer() {
+  launchedAt = Date.now();
   // every (re)start records into its own files, so a restart never overwrites what was already recorded
   const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
   if (live) streamerOpts.recordPattern = path.join(ROOT, 'recordings', `hubie_${stamp}_%03d.mp4`);
@@ -309,15 +313,24 @@ else {
   streamerOpts = { url: stageUrl, outFile: out, rtmp: live ? await kickUrl() : '', recordPattern: '', log };
   await launchStreamer();
   log(live ? 'STREAMING LIVE' : `recording to ${out}`);
-  // watchdog: if the encoder dies (for example the network to Kick drops) or video stops flowing, restart it by itself
+  // watchdog: if the encoder dies, video stops flowing, or the link to Kick is gone, restart the encoder by itself.
+  // The link check matters because ffmpeg keeps running (and recording to disk) after Kick closes the connection, so it looks healthy
+  // while the channel is offline. Kick also ends any single stream after 48 hours. Restarts after a lost link back off (20 s, 40 s, ...
+  // up to 5 min) so an outage on Kick's side does not turn into a restart loop; the wait resets once a link has held for 2 minutes.
+  const linkWatch = createLinkWatch({ link: kickLink || { active: 1, lastUpAt: 0 } });
+  const restartEncoder = async (why) => {
+    restarting = true; log(`watchdog: ${why}, restarting it`);
+    try { await streamer.stop(); } catch {}
+    for (let i = 0; i < 6 && running; i++) { try { await launchStreamer(); log('watchdog: encoder is back'); break; } catch (e) { log('watchdog: restart failed: ' + e.message); await sleep(5000 * (i + 1)); } }
+    restarting = false; linkWatch.reset();
+  };
   watchdogTimer = setInterval(async () => {
     if (!running || restarting || !streamer) return;
     const s = streamer.state;
-    if (s.alive && Date.now() - s.lastFrameAt < 20000) return;
-    restarting = true; log(`watchdog: encoder ${s.alive ? 'stalled' : 'stopped'}, restarting it`); rec({ kind: 'watchdog', alive: s.alive });
-    try { await streamer.stop(); } catch {}
-    for (let i = 0; i < 6 && running; i++) { try { await launchStreamer(); log('watchdog: encoder is back'); break; } catch (e) { log('watchdog: restart failed: ' + e.message); await sleep(5000 * (i + 1)); } }
-    restarting = false;
+    if (!s.alive || Date.now() - s.lastFrameAt >= 20000) { rec({ kind: 'watchdog', alive: s.alive }); await restartEncoder(`encoder ${s.alive ? 'stalled' : 'stopped'}`); return; }
+    if (!(live && kickLink)) return;
+    const lost = linkWatch.check(Date.now(), launchedAt);
+    if (lost) { rec({ kind: 'watchdog', link: 'down' }); await restartEncoder(`the link to Kick is gone (the next restart for this reason waits at least ${Math.round(lost.waitedMs * 2 / 1000)} s)`); }
   }, 5000);
 }
 await Promise.race([ready, sleep(15000)]);

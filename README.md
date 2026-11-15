@@ -45,7 +45,8 @@ flowchart LR
 * **Hands**: a Playwright driver attaches to a real Chrome that a human signed into Housebets once. It plays by clicking, reads results
   from the game's network responses, and refuses to play unless the balance is exactly zero (play mode).
 * **Voice**: Google Cloud TTS (Puck) with Kokoro as a free local fallback; the audio mixer lowers game sound under the voice.
-* **Watchdogs**: supervisor/systemd restarts, a game-browser-gone watchdog, a disk janitor, and a "technical break" card when the game
+* **Watchdogs**: supervisor/systemd restarts, an encoder watchdog that also notices when the link to Kick is lost (ffmpeg keeps recording after Kick
+  drops it, and Kick ends any single stream after about 48 hours) and reconnects with a growing wait, a game-browser-gone watchdog, a disk janitor, and a "technical break" card when the game
   browser needs a human (for example a site check, which Hubie never tries to pass).
 
 ## Setup (one page)
