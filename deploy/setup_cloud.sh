@@ -78,7 +78,7 @@ Environment=LP_NUM_THREADS=4
 Environment=LIBGL_ALWAYS_SOFTWARE=1
 # the game browser must never starve the stream's own processes (the roulette wheel is heavy): it gets a smaller share of the CPU
 CPUWeight=40
-ExecStart=/usr/bin/google-chrome --user-data-dir=$HOME/hubie-browser --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1 --window-size=1360,900 --window-position=0,0 --no-first-run --no-default-browser-check --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-background-timer-throttling --use-gl=egl --ignore-gpu-blocklist --password-store=basic --disable-features=TranslateUI https://www.housebets.com/house-games
+ExecStart=/usr/bin/google-chrome --user-data-dir=$HOME/hubie-browser --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1 --window-size=1360,900 --window-position=0,0 --no-first-run --no-default-browser-check --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-background-timer-throttling --use-gl=egl --enable-unsafe-swiftshader --ignore-gpu-blocklist --password-store=basic --disable-features=TranslateUI https://www.housebets.com/house-games
 Restart=always
 RestartSec=5
 [Install]
